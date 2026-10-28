@@ -2,7 +2,7 @@
 
 📖 **Полный гайд с поиском: [stombul.github.io/personalworlds](https://stombul.github.io/personalworlds/)**
 
-## Шпаргалка
+## Читкоды для ленивых
 
 | Хочу… | Команда |
 |---|---|
@@ -22,13 +22,13 @@
 | сменить тип мира (всё удалится) | `/pw reset <тип>` |
 | справка прямо в игре | `/pw` |
 
-## Разделы гайда
+## Карта сокровищ
 
-- [Быстрый старт](https://stombul.github.io/personalworlds/getting-started)
-- [Типы миров](https://stombul.github.io/personalworlds/world-types)
-- [Доступ и роли](https://stombul.github.io/personalworlds/roles)
-- [Настройки мира](https://stombul.github.io/personalworlds/settings)
-- [Все команды](https://stombul.github.io/personalworlds/commands)
-- [Сценарии](https://stombul.github.io/personalworlds/scenarios)
-- [Как это устроено](https://stombul.github.io/personalworlds/how-it-works)
-- [Вопросы и проблемы](https://stombul.github.io/personalworlds/faq)
+- [Старт за 5 минут](https://stombul.github.io/personalworlds/getting-started)
+- [Выбор мира](https://stombul.github.io/personalworlds/world-types)
+- [Кто тут главный](https://stombul.github.io/personalworlds/roles)
+- [Подкрутить мир](https://stombul.github.io/personalworlds/settings)
+- [Все заклинания](https://stombul.github.io/personalworlds/commands)
+- [Рецепты идей](https://stombul.github.io/personalworlds/scenarios)
+- [Магия под капотом](https://stombul.github.io/personalworlds/how-it-works)
+- [Помогите, всё сломалось!](https://stombul.github.io/personalworlds/faq)

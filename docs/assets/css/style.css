@@ -69,9 +69,14 @@ a:hover { color: #d14b00; text-decoration: none; }
   text-decoration: none;
 }
 .logo-block {
-  width: 84px; height: 84px;
-  filter: drop-shadow(2px 4px 3px rgba(0,0,0,.35));
+  width: 72px; height: 76px;
+  image-rendering: pixelated;
 }
+.header-star { position: absolute; image-rendering: pixelated; }
+.header-star.s1 { left: 108px; top: 12px; }
+.header-star.s2 { left: 430px; top: 26px; width: 22px; height: 22px; }
+.header-star.s3 { left: 560px; top: 70px; }
+.header-pick { position: absolute; right: 150px; top: 44px; image-rendering: pixelated; }
 .logo-text { display: flex; flex-direction: column; }
 .logo-title {
   font: bold 40px/1 "Trebuchet MS", Verdana, sans-serif;
@@ -274,12 +279,12 @@ a:hover { color: #d14b00; text-decoration: none; }
 
 .content-inner h1 {
   margin: 14px 0 12px;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
   font: bold 24px "Trebuchet MS", Verdana, sans-serif;
   color: #1b5fae;
-  border-bottom: 3px solid;
-  border-image: linear-gradient(90deg, #f7a600, #2f78c8 40%, transparent) 1;
   text-shadow: 1px 1px 0 #dbe8f7;
+  background: url(../img/divider.gif) left bottom / 100% 4px no-repeat;
+  image-rendering: pixelated;
 }
 .content-inner h2 {
   margin: 26px 0 10px;
@@ -292,10 +297,9 @@ a:hover { color: #d14b00; text-decoration: none; }
   text-shadow: 0 1px 0 #134c8c;
 }
 .content-inner h2::before {
-  content: "»";
-  position: absolute; left: 10px; top: 3px;
-  color: #ffd36a;
-  font-size: 17px;
+  content: url(../img/diamond.gif);
+  position: absolute; left: 6px; top: 4px;
+  line-height: 0;
 }
 .content-inner h3 {
   margin: 20px 0 8px;
@@ -312,7 +316,29 @@ a:hover { color: #d14b00; text-decoration: none; }
 }
 .content-inner ul, .content-inner ol { padding-left: 24px; }
 .content-inner li { margin: 3px 0; }
-.content-inner ul li::marker { color: #f08a00; }
+.content-inner ul { list-style-image: url(../img/bullet.gif); }
+#markdown-toc, #markdown-toc ul { list-style-image: none; }
+
+/* ---------- гифки ---------- */
+
+.gif-inline { vertical-align: middle; image-rendering: pixelated; }
+.content-inner h2 .gif-inline { margin-left: 6px; position: relative; top: -1px; }
+.menu-arrow { vertical-align: middle; margin-right: 2px; }
+.menu-badge { vertical-align: middle; margin-left: 2px; }
+.construction { margin-top: 12px; text-align: center; }
+.construction img { max-width: 100%; image-rendering: pixelated; }
+.torch { vertical-align: middle; height: 30px; image-rendering: pixelated; margin: 0 8px; }
+.sparkle {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  image-rendering: pixelated;
+  animation: sparkle-fall .9s linear forwards;
+}
+@keyframes sparkle-fall {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(26px) scale(.4); }
+}
 
 /* оглавление {:toc} */
 #markdown-toc {
@@ -485,7 +511,8 @@ a:hover { color: #d14b00; text-decoration: none; }
   #tabs a { white-space: nowrap; }
   .beta-badge { display: none; }
   .logo { left: 14px; }
-  .logo-block { width: 60px; height: 60px; }
+  .logo-block { width: 54px; height: 57px; }
+  .header-star, .header-pick { display: none; }
   .logo-title { font-size: 28px; }
   .topbar-right { display: none; }
   .content-inner { padding: 4px 10px 14px; overflow-x: auto; }

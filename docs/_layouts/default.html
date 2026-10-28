@@ -14,32 +14,26 @@
 <div id="wrapper">
 
   <div id="topbar">
-    <span class="topbar-left">Добро пожаловать, <b>Гость</b>!</span>
+    <span class="topbar-left">Здарова, <b>путник</b>! Чай, кофе, креатив?</span>
     <span class="topbar-right">
-      <a href="#" id="bookmark">★ Добавить в избранное</a> |
-      <a href="{{ '/' | relative_url }}">Сделать стартовой</a>
+      <a href="#" id="bookmark">★ Запомнить навечно</a> |
+      <a href="{{ '/' | relative_url }}">Сделать домашней страничкой</a>
     </span>
   </div>
 
   <div id="header">
     <div class="header-shine"></div>
     <a href="{{ '/' | relative_url }}" class="logo">
-      <svg class="logo-block" viewBox="0 0 64 64" aria-hidden="true">
-        <polygon points="32,4 60,18 32,32 4,18" fill="#6cbf3f"/>
-        <polygon points="32,4 60,18 32,32 4,18" fill="url(#shine)"/>
-        <polygon points="4,18 32,32 32,60 4,46" fill="#8b5a2b"/>
-        <polygon points="32,32 60,18 60,46 32,60" fill="#6b4320"/>
-        <polygon points="4,18 32,32 32,38 4,24" fill="#4f9a2a"/>
-        <polygon points="32,32 60,18 60,24 32,38" fill="#3d7d1f"/>
-        <defs><linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
-        </linearGradient></defs>
-      </svg>
+      <img class="logo-block" src="{{ '/assets/img/block.gif' | relative_url }}" alt="">
       <span class="logo-text">
         <span class="logo-title">Личные&nbsp;Миры</span>
-        <span class="logo-slogan">Строй. Проектируй. Зови друзей!</span>
+        <span class="logo-slogan">Строй. Ломай. Зови друзей ломать вместе!</span>
       </span>
     </a>
+    <img class="header-star s1" src="{{ '/assets/img/star.gif' | relative_url }}" alt="">
+    <img class="header-star s2" src="{{ '/assets/img/star.gif' | relative_url }}" alt="">
+    <img class="header-star s3" src="{{ '/assets/img/star.gif' | relative_url }}" alt="">
+    <img class="header-pick" src="{{ '/assets/img/pickaxe.gif' | relative_url }}" alt="">
     <div class="beta-badge"><span>BETA</span></div>
   </div>
 
@@ -49,14 +43,15 @@
     {% endfor %}
   </div>
 
+  {% capture star %}<img src="{{ '/assets/img/star.gif' | relative_url }}" alt="★" class="gif-inline">{% endcapture %}
   <div id="ticker"><div class="ticker-inner">
-    ★ Добро пожаловать на сайт личных миров нашего сервера! ★ Создай свой мир командой <b>/pw create</b> ★
-    Вернуться в выживание — <b>/pw leave</b> ★ Позови друга: <b>/pw access add &lt;ник&gt;</b> ★
-    Справка прямо в игре — <b>/pw</b> ★
+    {{ star }} ВНИМАНИЕ!!! Открыт сезон личных миров! {{ star }} Свой мир за 1 команду: <b>/pw create</b> {{ star }}
+    Соскучился по выживанию? <b>/pw leave</b> {{ star }} Друзья скучают без стройки: <b>/pw access add &lt;ник&gt;</b> {{ star }}
+    Забыл всё? Просто напиши <b>/pw</b> {{ star }} Креатив в выживание не пронести — даже не пытайся :) {{ star }}
   </div></div>
 
   <div id="crumbs">
-    Вы здесь: <a href="{{ '/' | relative_url }}">Главная</a>{% if page.url != "/" %} &raquo; <b>{{ page.title }}</b>{% endif %}
+    Ты тут: <a href="{{ '/' | relative_url }}">Главная</a>{% if page.url != "/" %} &raquo; <b>{{ page.title }}</b>{% endif %}
   </div>
 
   <div id="columns">
@@ -64,32 +59,32 @@
     <div id="sidebar">
 
       <div class="box">
-        <div class="box-title">Меню</div>
+        <div class="box-title">Куда тыкать?</div>
         <ul class="menu">
           {% for p in nav %}
-          <li><a href="{{ p.url | relative_url }}"{% if p.url == page.url %} class="current"{% endif %}>&raquo; {{ p.title }}</a></li>
+          <li><a href="{{ p.url | relative_url }}"{% if p.url == page.url %} class="current"{% endif %}>{% if p.url == page.url %}<img src="{{ '/assets/img/arrow.gif' | relative_url }}" alt="»" class="menu-arrow">{% else %}&raquo;{% endif %} {{ p.title }}{% if p.badge %} <img src="{{ '/assets/img/' | append: p.badge | append: '.gif' | relative_url }}" alt="{{ p.badge | upcase }}!" class="menu-badge">{% endif %}</a></li>
           {% endfor %}
         </ul>
       </div>
 
       <div class="box">
-        <div class="box-title">Поиск по сайту</div>
+        <div class="box-title">Искалка 3000</div>
         <div class="box-body">
           <form id="search-form" autocomplete="off">
-            <input type="text" id="search-input" placeholder="например: гость">
-            <button type="submit" class="oldbtn">Найти!</button>
+            <input type="text" id="search-input" placeholder="что потерял?">
+            <button type="submit" class="oldbtn">Искать!</button>
           </form>
           <div id="search-results"></div>
         </div>
       </div>
 
       <div class="box">
-        <div class="box-title">Совет дня</div>
+        <div class="box-title">Мудрость крафтера</div>
         <div class="box-body tip-of-day" id="tip-of-day">Нажимайте на кнопки в чате вместо набора команд!</div>
       </div>
 
       <div class="box">
-        <div class="box-title">Главные команды</div>
+        <div class="box-title">Кнопки спасения</div>
         <div class="box-body cmd-list">
           <code>/pw create</code> — создать мир<br>
           <code>/pw home</code> — в свой мир<br>
@@ -112,14 +107,21 @@
       <div class="content-inner">
 {{ content }}
       </div>
+      <div class="construction">
+        <img src="{{ '/assets/img/construction.gif' | relative_url }}" alt="Сайт постоянно строится!">
+      </div>
     </div>
 
   </div>
 
   <div id="footer">
-    <div class="counter">Вы были здесь: <span id="visit-counter">000001</span> раз</div>
-    <p>Личные Миры &copy; 2007–{{ site.time | date: "%Y" }} &bull; Гайд для игроков сервера</p>
-    <p class="small">Сайт лучше всего смотреть в разрешении <b>1024×768</b> &bull; Не нашли ответ? Спросите администрацию сервера.</p>
+    <div class="counter">
+      <img src="{{ '/assets/img/torch.gif' | relative_url }}" alt="" class="torch">
+      Ты заглядывал сюда <span id="visit-counter">000001</span> раз
+      <img src="{{ '/assets/img/torch.gif' | relative_url }}" alt="" class="torch">
+    </div>
+    <p>Личные Миры &copy; 2007–{{ site.time | date: "%Y" }} &bull; Сделано с любовью, блокнотом и киркой</p>
+    <p class="small">Лучше всего смотрится в разрешении <b>1024×768</b> и с чаем &bull; Не нашёл ответ? Пиши админам сервера, они не кусаются.</p>
   </div>
 
 </div>
@@ -128,15 +130,16 @@
 (function () {
   // Совет дня
   var tips = [
-    "Нажимайте на кнопки в чате вместо набора команд!",
-    "<b>/pw leave</b> возвращает ровно туда, откуда вы ушли.",
-    "Пресет <b>blueprint</b> рисует сетку по чанкам — удобно размечать постройку.",
-    "<b>/gamemode spectator</b> в своём мире — облететь постройку со стороны.",
-    "Тип мира <b>seed</b> — та же местность, что в выживании.",
-    "Вещи из креатива не попадут в выживание: инвентари разные.",
-    "Гостям можно включить наблюдателя: <b>/pw setting guest_mode spectator</b>.",
-    "Умерли в личном мире? Возродитесь там же, вещи останутся.",
-    "<b>/pw list</b> — все миры, куда вас пустили."
+    "Кнопки в чате нажимаются. Да, правда. Попробуй!",
+    "<b>/pw leave</b> вернёт тебя ровно туда, где ты стоял. Даже если это была лава.",
+    "Пресет <b>blueprint</b> рисует сетку по чанкам. Перфекционисты плачут от счастья.",
+    "<b>/gamemode spectator</b> — облети постройку как настоящий архитектор.",
+    "Тип мира <b>seed</b> — та же местность, что в выживании, только без соседских хибар.",
+    "Алмазы из креатива в выживание не пронести. Мы проверяли. Много раз.",
+    "Гость ничего не сломает. Даже если очень захочет.",
+    "Умер в личном мире? Не беда — возродишься там же, вещи при тебе.",
+    "<b>/pw list</b> — все миры, куда тебя пустили. Друзей много не бывает!",
+    "Строитель строит, админ командует, владелец пьёт чай."
   ];
   var tip = document.getElementById("tip-of-day");
   if (tip) tip.innerHTML = tips[Math.floor(Math.random() * tips.length)];
@@ -153,7 +156,25 @@
   var bm = document.getElementById("bookmark");
   if (bm) bm.addEventListener("click", function (e) {
     e.preventDefault();
-    alert("Нажмите Ctrl+D, чтобы добавить сайт в избранное!");
+    alert("Жми Ctrl+D — и сайт навсегда твой! (ну, в закладках)");
+  });
+
+  // Шлейф из звёздочек за курсором, как в лучших домах 2007 года
+  var starSrc = "{{ '/assets/img/star.gif' | relative_url }}";
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var last = 0;
+  if (!calm) document.addEventListener("mousemove", function (e) {
+    var now = Date.now();
+    if (now - last < 45) return;
+    last = now;
+    var s = document.createElement("img");
+    s.src = starSrc;
+    s.className = "sparkle";
+    s.alt = "";
+    s.style.left = (e.pageX - 7 + (Math.random() * 10 - 5)) + "px";
+    s.style.top = (e.pageY - 7) + "px";
+    document.body.appendChild(s);
+    setTimeout(function () { s.remove(); }, 900);
   });
 
   // Поиск
@@ -177,12 +198,12 @@
       }
       out.push('<div class="result"><a href="' + p.url + '">' + esc(p.title) + '</a><div>' + snip + '</div></div>');
     });
-    box.innerHTML = out.length ? out.join("") : '<div class="result none">Ничего не найдено :(</div>';
+    box.innerHTML = out.length ? out.join("") : '<div class="result none">Пусто, как в мире-пустоте :(</div>';
   }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (index) { run(); return; }
-    box.innerHTML = '<div class="result none">Ищем…</div>';
+    box.innerHTML = '<div class="result none">Копаем…</div>';
     fetch("{{ '/search.json' | relative_url }}").then(function (r) { return r.json(); })
       .then(function (data) { index = data; run(); })
       .catch(function () { box.innerHTML = '<div class="result none">Поиск недоступен</div>'; });
