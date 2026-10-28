@@ -319,6 +319,60 @@ a:hover { color: #d14b00; text-decoration: none; }
 .content-inner ul { list-style-image: url(../img/bullet.gif); }
 #markdown-toc, #markdown-toc ul { list-style-image: none; }
 
+/* ---------- кнопка «бесплатные алмазы» ---------- */
+
+.free-diamonds {
+  display: block;
+  margin-bottom: 12px;
+  padding: 8px 6px 9px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff !important;
+  font-family: Impact, "Arial Black", Verdana, sans-serif;
+  background: linear-gradient(#ff5a5a, #e00000 50%, #b80000 51%, #e81c1c);
+  border: 3px solid #ffd800;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #b80000, 0 4px 10px rgba(180,0,0,.5);
+  animation: fd-pulse .8s ease-in-out infinite, fd-glow 1.6s steps(1) infinite;
+}
+.free-diamonds:hover { animation: fd-shake .25s linear infinite; }
+.fd-top {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #ffe600;
+  animation: fd-blink .5s steps(1) infinite;
+}
+.fd-main {
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  margin: 4px 0;
+  font-size: 19px;
+  line-height: 1.05;
+  text-shadow: 2px 2px 0 #7a0000, 0 0 8px #ffde00;
+}
+.fd-main img { flex: none; image-rendering: pixelated; }
+.fd-sub { display: block; font: bold 10px Verdana, sans-serif; color: #ffe9e9; }
+.fd-sub b { color: #ffe600; font-size: 12px; }
+.fd-click {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  font-size: 13px;
+  color: #b80000;
+  background: linear-gradient(#fffbd0, #ffe600);
+  border: 1px solid #a07000;
+  border-radius: 4px;
+}
+@keyframes fd-pulse { 50% { transform: scale(1.05); } }
+@keyframes fd-glow { 50% { border-color: #00e5ff; } }
+@keyframes fd-blink { 50% { color: #fff; } }
+@keyframes fd-shake {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(-2px, 1px) rotate(-2deg); }
+  50% { transform: translate(2px, -1px) rotate(2deg); }
+  75% { transform: translate(-1px, -1px) rotate(-1deg); }
+}
+
 /* ---------- гифки ---------- */
 
 .gif-inline { vertical-align: middle; image-rendering: pixelated; }
@@ -505,7 +559,7 @@ a:hover { color: #d14b00; text-decoration: none; }
   #wrapper { width: auto; border: none; box-shadow: none; }
   #columns { flex-direction: column; }
   #sidebar { flex: none; width: 100%; padding: 12px 12px 0; }
-  #sidebar .box:nth-child(n+3), .buttons88 { display: none; }
+  #sidebar .box:nth-child(n+4), .buttons88 { display: none; }
   #content { width: 100%; }
   #tabs { overflow-x: auto; }
   #tabs a { white-space: nowrap; }
