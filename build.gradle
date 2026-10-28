@@ -53,6 +53,15 @@ neoForge {
             server()
             programArgument '--nogui'
         }
+        // Клиент для проверки. Сразу заходит на сервер: gradlew runClient -Pquick_play=localhost:25565
+        client {
+            client()
+            gameDirectory = project.file('run-client')
+            if (project.findProperty("quick_play")) {
+                programArgument '--quickPlayMultiplayer'
+                programArgument project.findProperty("quick_play").toString()
+            }
+        }
         gameTestServer {
             type = "gameTestServer"
             sourceSet = sourceSets.gametest
