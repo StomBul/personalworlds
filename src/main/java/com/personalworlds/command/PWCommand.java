@@ -419,6 +419,8 @@ public final class PWCommand {
         askConfirm(p, "confirm.transfer", () -> {
             if (m().ofOwner(p.getUUID()) != w || m().ofOwner(to) != null) return;
             m().transfer(w, to, realName);
+            PersonalServerLevel lvl = m().loaded(w);
+            if (lvl != null) lvl.players().forEach(ServerPlayer::refreshTabListName);
             Msg.send(p, "transfer.done", realName);
             ServerPlayer t = p.server.getPlayerList().getPlayer(to);
             if (t != null) Msg.send(t, "transfer.received", p.getGameProfile().getName());
@@ -875,6 +877,7 @@ public final class PWCommand {
             case "name" -> {
                 if (value.isEmpty() || value.length() > 32) return badValue(c, value);
                 w.displayName = value;
+                level.players().forEach(ServerPlayer::refreshTabListName);
             }
             case "builder_mode", "guest_mode" -> {
                 GameType g = GameType.byName(value.toLowerCase(Locale.ROOT), null);

@@ -131,6 +131,7 @@ public final class PlayerFlow {
         }
         if (toPersonal || WorldManager.isPersonalKey(from)) {
             p.server.getCommands().sendCommands(p);
+            p.refreshTabListName();
         }
     }
 

@@ -256,6 +256,19 @@ public final class PWEvents {
         if (e.getLevel() instanceof PersonalServerLevel) e.setCanceled(true);
     }
 
+    // ---------------------------------------------------------------- список игроков (Tab)
+
+    /** Метка личного мира у ника в Tab: «Steve [✦ Alex]» или «Alex [✦ у себя]». */
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public static void onTabListName(PlayerEvent.TabListNameFormat e) {
+        if (!(e.getEntity() instanceof ServerPlayer p) || !(p.serverLevel() instanceof PersonalServerLevel level)) return;
+        PersonalWorld w = level.world();
+        // Основа — то, что уже выставили другие моды, или обычное имя с цветом команды.
+        net.minecraft.network.chat.Component base = e.getDisplayName() != null ? e.getDisplayName() : p.getDisplayName();
+        String suffix = p.getUUID().equals(w.owner) ? Msg.raw("tab.own") : Msg.raw("tab.other", w.displayName);
+        e.setDisplayName(base.copy().append(Msg.parse(suffix)));
+    }
+
     // ---------------------------------------------------------------- гости и PvP
 
     private static boolean isGuest(Player player) {

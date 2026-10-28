@@ -90,6 +90,8 @@ public class PWGameTests {
             check(lvl.getBlockState(new BlockPos(5, -1, 5)).isAir(), "под бедроком пустота");
             check(alice.getY() >= 64 && alice.getY() < 66, "игрок стоит на поверхности, Y=" + alice.getY());
             check(lvl.getWorldBorder().getSize() == 512, "граница 512: " + lvl.getWorldBorder().getSize());
+            check(alice.getTabListDisplayName() != null && alice.getTabListDisplayName().getString().equals("Alice [✦ у себя]"),
+                    "Tab: метка своего мира — " + alice.getTabListDisplayName());
 
             long owTime = server.overworld().getDayTime();
             cmd(alice, "time set 18000");
@@ -129,6 +131,8 @@ public class PWGameTests {
             check(bob.level() == alice.level(), "Bob зашёл в мир Alice");
             PersonalServerLevel lvl = (PersonalServerLevel) alice.level();
             check(bob.gameMode.getGameModeForPlayer() == GameType.ADVENTURE, "гость в режиме приключения");
+            check(bob.getTabListDisplayName() != null && bob.getTabListDisplayName().getString().equals("Bob [✦ Alice]"),
+                    "Tab: метка чужого мира — " + bob.getTabListDisplayName());
             cmd(bob, "setblock 4 64 4 minecraft:gold_block");
             check(lvl.getBlockState(new BlockPos(4, 64, 4)).isAir(), "гостю команды недоступны");
             cmd(bob, "pw kick Alice");
@@ -149,6 +153,7 @@ public class PWGameTests {
             check(alice.getInventory().countItem(Items.STONE) == 0, "камень из личного мира не вынесен");
             check(alice.gameMode.getGameModeForPlayer() == GameType.SURVIVAL, "режим выживания восстановлен");
             check(bob.gameMode.getGameModeForPlayer() == GameType.SURVIVAL, "у Bob тоже выживание");
+            check(alice.getTabListDisplayName() == null, "Tab: в основном мире метки нет");
 
             PersonalWorld w = lvl.world();
             ResourceKey<Level> key = lvl.dimension();
