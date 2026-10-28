@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.url != "/" %}{{ page.title }} :: {% endif %}{{ site.title }} — гайд для игроков</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23866043'/%3E%3Crect width='16' height='5' fill='%235fa83a'/%3E%3Crect y='5' width='3' height='2' fill='%235fa83a'/%3E%3Crect x='7' y='5' width='2' height='3' fill='%235fa83a'/%3E%3Crect x='12' y='5' width='4' height='2' fill='%235fa83a'/%3E%3C/svg%3E">
+</head>
+<body>
+{% assign nav = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" %}
+
+<div id="wrapper">
+
+  <div id="topbar">
+    <span class="topbar-left">Добро пожаловать, <b>Гость</b>!</span>
+    <span class="topbar-right">
+      <a href="#" id="bookmark">★ Добавить в избранное</a> |
+      <a href="{{ '/' | relative_url }}">Сделать стартовой</a>
+    </span>
+  </div>
+
+  <div id="header">
+    <div class="header-shine"></div>
+    <a href="{{ '/' | relative_url }}" class="logo">
+      <svg class="logo-block" viewBox="0 0 64 64" aria-hidden="true">
+        <polygon points="32,4 60,18 32,32 4,18" fill="#6cbf3f"/>
+        <polygon points="32,4 60,18 32,32 4,18" fill="url(#shine)"/>
+        <polygon points="4,18 32,32 32,60 4,46" fill="#8b5a2b"/>
+        <polygon points="32,32 60,18 60,46 32,60" fill="#6b4320"/>
+        <polygon points="4,18 32,32 32,38 4,24" fill="#4f9a2a"/>
+        <polygon points="32,32 60,18 60,24 32,38" fill="#3d7d1f"/>
+        <defs><linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient></defs>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-title">Личные&nbsp;Миры</span>
+        <span class="logo-slogan">Строй. Проектируй. Зови друзей!</span>
+      </span>
+    </a>
+    <div class="beta-badge"><span>BETA</span></div>
+  </div>
+
+  <div id="tabs">
+    {% for p in nav limit: 6 %}
+    <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} class="current"{% endif %}><span>{{ p.title }}</span></a>
+    {% endfor %}
+  </div>
+
+  <div id="ticker"><div class="ticker-inner">
+    ★ Добро пожаловать на сайт личных миров нашего сервера! ★ Создай свой мир командой <b>/pw create</b> ★
+    Вернуться в выживание — <b>/pw leave</b> ★ Позови друга: <b>/pw access add &lt;ник&gt;</b> ★
+    Справка прямо в игре — <b>/pw</b> ★
+  </div></div>
+
+  <div id="crumbs">
+    Вы здесь: <a href="{{ '/' | relative_url }}">Главная</a>{% if page.url != "/" %} &raquo; <b>{{ page.title }}</b>{% endif %}
+  </div>
+
+  <div id="columns">
+
+    <div id="sidebar">
+
+      <div class="box">
+        <div class="box-title">Меню</div>
+        <ul class="menu">
+          {% for p in nav %}
+          <li><a href="{{ p.url | relative_url }}"{% if p.url == page.url %} class="current"{% endif %}>&raquo; {{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Поиск по сайту</div>
+        <div class="box-body">
+          <form id="search-form" autocomplete="off">
+            <input type="text" id="search-input" placeholder="например: гость">
+            <button type="submit" class="oldbtn">Найти!</button>
+          </form>
+          <div id="search-results"></div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Совет дня</div>
+        <div class="box-body tip-of-day" id="tip-of-day">Нажимайте на кнопки в чате вместо набора команд!</div>
+      </div>
+
+      <div class="box">
+        <div class="box-title">Главные команды</div>
+        <div class="box-body cmd-list">
+          <code>/pw create</code> — создать мир<br>
+          <code>/pw home</code> — в свой мир<br>
+          <code>/pw leave</code> — в выживание<br>
+          <code>/pw visit</code> — к другу<br>
+          <code>/pw setting</code> — настройки
+        </div>
+      </div>
+
+      <div class="buttons88">
+        <span class="b88 b88-a"><b>Web 2.0</b><i>ready</i></span>
+        <span class="b88 b88-b"><b>1024×768</b><i>best view</i></span>
+        <span class="b88 b88-c"><b>NOTEPAD</b><i>handmade</i></span>
+        <span class="b88 b88-d"><b>&lt;/&gt; HTML</b><i>valid*</i></span>
+      </div>
+
+    </div>
+
+    <div id="content">
+      <div class="content-inner">
+{{ content }}
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <div class="counter">Вы были здесь: <span id="visit-counter">000001</span> раз</div>
+    <p>Личные Миры &copy; 2007–{{ site.time | date: "%Y" }} &bull; Гайд для игроков сервера</p>
+    <p class="small">Сайт лучше всего смотреть в разрешении <b>1024×768</b> &bull; Не нашли ответ? Спросите администрацию сервера.</p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  // Совет дня
+  var tips = [
+    "Нажимайте на кнопки в чате вместо набора команд!",
+    "<b>/pw leave</b> возвращает ровно туда, откуда вы ушли.",
+    "Пресет <b>blueprint</b> рисует сетку по чанкам — удобно размечать постройку.",
+    "<b>/gamemode spectator</b> в своём мире — облететь постройку со стороны.",
+    "Тип мира <b>seed</b> — та же местность, что в выживании.",
+    "Вещи из креатива не попадут в выживание: инвентари разные.",
+    "Гостям можно включить наблюдателя: <b>/pw setting guest_mode spectator</b>.",
+    "Умерли в личном мире? Возродитесь там же, вещи останутся.",
+    "<b>/pw list</b> — все миры, куда вас пустили."
+  ];
+  var tip = document.getElementById("tip-of-day");
+  if (tip) tip.innerHTML = tips[Math.floor(Math.random() * tips.length)];
+
+  // Счётчик посещений (личный: считает ваши визиты в этом браузере)
+  var counter = document.getElementById("visit-counter");
+  try {
+    var n = parseInt(localStorage.getItem("pw-visits") || "0", 10) + 1;
+    localStorage.setItem("pw-visits", String(n));
+    counter.textContent = ("000000" + n).slice(-6);
+  } catch (e) { /* без хранилища остаётся 000001 */ }
+
+  // «Добавить в избранное»
+  var bm = document.getElementById("bookmark");
+  if (bm) bm.addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("Нажмите Ctrl+D, чтобы добавить сайт в избранное!");
+  });
+
+  // Поиск
+  var form = document.getElementById("search-form");
+  var input = document.getElementById("search-input");
+  var box = document.getElementById("search-results");
+  var index = null;
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+  function run() {
+    var q = input.value.trim().toLowerCase();
+    if (q.length < 2) { box.innerHTML = ""; return; }
+    var out = [];
+    index.forEach(function (p) {
+      var text = p.content, low = text.toLowerCase();
+      var i = low.indexOf(q), inTitle = p.title.toLowerCase().indexOf(q) >= 0;
+      if (i < 0 && !inTitle) return;
+      var snip = "";
+      if (i >= 0) {
+        var a = Math.max(0, i - 40), b = Math.min(text.length, i + q.length + 60);
+        snip = (a > 0 ? "…" : "") + esc(text.slice(a, i)) + "<b>" + esc(text.slice(i, i + q.length)) + "</b>" + esc(text.slice(i + q.length, b)) + (b < text.length ? "…" : "");
+      }
+      out.push('<div class="result"><a href="' + p.url + '">' + esc(p.title) + '</a><div>' + snip + '</div></div>');
+    });
+    box.innerHTML = out.length ? out.join("") : '<div class="result none">Ничего не найдено :(</div>';
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (index) { run(); return; }
+    box.innerHTML = '<div class="result none">Ищем…</div>';
+    fetch("{{ '/search.json' | relative_url }}").then(function (r) { return r.json(); })
+      .then(function (data) { index = data; run(); })
+      .catch(function () { box.innerHTML = '<div class="result none">Поиск недоступен</div>'; });
+  });
+})();
+</script>
+</body>
+</html>

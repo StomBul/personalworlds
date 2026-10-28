@@ -2,31 +2,16 @@ title: Личные миры
 description: Гайд для игроков сервера — команды и устройство личных миров
 lang: ru
 
-remote_theme: just-the-docs/just-the-docs@v0.10.1
-plugins:
-  - jekyll-remote-theme
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  syntax_highlighter_opts:
+    disable: true
 
-color_scheme: dark
-search_enabled: true
-search:
-  heading_level: 3
-  button: true
-heading_anchors: true
-back_to_top: true
-back_to_top_text: "Наверх"
-
-footer_content: "Гайд по личным мирам сервера. Не нашли ответ — спросите администрацию."
-
-callouts:
-  note:
-    title: Примечание
-    color: blue
-  tip:
-    title: Совет
-    color: green
-  warning:
-    title: Внимание
-    color: red
-  important:
-    title: Важно
-    color: yellow
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
