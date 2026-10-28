@@ -1,0 +1,10 @@
+.gradle/
+build/
+run/
+run-gametest/
+out/
+.idea/
+*.iml
+.vscode/
+docs/_site/
+docs/.jekyll-cache/

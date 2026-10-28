@@ -1,0 +1,35 @@
+title: Personal Worlds
+description: Личные миры игроков на одном сервере NeoForge 1.21.1
+lang: ru
+
+# Тема Just the Docs подключается напрямую с GitHub, ничего устанавливать не нужно.
+remote_theme: just-the-docs/just-the-docs@v0.10.1
+plugins:
+  - jekyll-remote-theme
+
+color_scheme: dark
+search_enabled: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Наверх"
+
+# Замените ссылку на свой репозиторий.
+aux_links:
+  "GitHub": "https://github.com/stombul/personalworlds"
+aux_links_new_tab: true
+
+footer_content: "Personal Worlds — серверный мод для NeoForge 1.21.1."
+
+callouts:
+  note:
+    title: Примечание
+    color: blue
+  tip:
+    title: Совет
+    color: green
+  warning:
+    title: Внимание
+    color: red
+  important:
+    title: Важно
+    color: yellow

@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.personalworlds.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BaseCommandBlockMixin",
+    "CommandSourceStackMixin",
+    "CommandsMixin",
+    "EntitySelectorMixin",
+    "EntitySelectorParserMixin",
+    "GameRuleCommandMixin",
+    "PlayerListMixin",
+    "ServerLevelMixin",
+    "TimeCommandMixin",
+    "WeatherCommandMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
